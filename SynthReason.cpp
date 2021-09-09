@@ -278,28 +278,40 @@ int main(int argc, char * argv[]) {
   desnumber = "count", desobject = "what", destime = "when", desdescription = "describe", desreason = "why", desplace = "where", desemotion = "feel", desaction = "how", descommand = "command", desbridge = "bridge", desconcept = "concept";
   cout << "SynthReason.  v0.9b" << endl;
   int sentstruc = 0;
+  ifstream file;
+  ifstream::pos_type size;
+  char * memblock;
+  file.open("knowledgebase.txt", ios:: in | ios::binary | ios::ate);
+  if (file.is_open()) {
+    size = file.tellg();
+    memblock = new char[size];
+    file.seekg(0, ios::beg);
+    file.read(memblock, size);
+    file.close();
+    answerstring = memblock;
+    delete[] memblock;
+  }
   while (0 == 0) {
     cout << endl;
-    ifstream file;
+
     ofstream fileo;
     string line;
     ofstream textfile4;
     ofstream textfile;
     ucount = 0;
     wordcountstat = 0;
-    ifstream::pos_type size;
-    char * memblock;
-    file.open("knowledgebase.txt", ios:: in | ios::binary | ios::ate);
-    if (file.is_open()) {
-      size = file.tellg();
-      memblock = new char[size];
-      file.seekg(0, ios::beg);
-      file.read(memblock, size);
-      file.close();
-      answerstring = memblock;
-      delete[] memblock;
-    }
     if (sweep == 0) {
+      char * memblock;
+      file.open("knowledgebase.txt", ios:: in | ios::binary | ios::ate);
+      if (file.is_open()) {
+        size = file.tellg();
+        memblock = new char[size];
+        file.seekg(0, ios::beg);
+        file.read(memblock, size);
+        file.close();
+        answerstring = memblock;
+        delete[] memblock;
+      }
       speedprocessing = 0;
       cout << "USER: ";
       getline(cin, userinput);
@@ -433,10 +445,6 @@ int main(int argc, char * argv[]) {
       textfile4 << answerstring;
       textfile4.close();
     }
-    ofstream NLP;
-    NLP.open("NLP.txt");
-    NLP << theanswerready;
-    NLP.close();
     n++;
     cout << userinput;
     cout << "[" << theanswerready << "]";
