@@ -327,15 +327,6 @@ string processlanguage(string userinput) {
           answerstring = answerstring + requestdescriptors + ">" + word + ":";
           anscount++;
         }
-        exists = 0;
-        exists = filesearch(word, "objects.txt");
-        if (exists == 1) {
-          description = word;
-          string requestdescriptors = desobject;
-          string requestdescriptorsword = word;
-          answerstring = answerstring + requestdescriptors + ">" + word + ":";
-          anscount++;
-        }
       }
       word.erase();
     }
