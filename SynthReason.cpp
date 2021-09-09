@@ -104,23 +104,6 @@ int filesearch(string segment, string file) {
   line.erase();
   return (exists);
 }
-
-string processlogic(string answerstringsegment) {
-  int progression = 0;
-  string foo = 0;
-  if (answerstringsegment.find("are") > 0) {
-    progression = 1;
-  }
-  if (answerstringsegment.find("aren't") > 0) {
-    progression = 1;
-  }
-  return foo;
-}
-
-void processmeaningcorrelationmatrix();
-string processresponselogic() {
-  fail = 0;
-}
 string processresponsealgbraic(string answerstring, string userinput) {
   string answerstringsegment, theanswer, theanswerready, theanswerreadyreal;
   int ucountpos = 0;
@@ -230,10 +213,8 @@ string processresponsealgbraic(string answerstring, string userinput) {
       }
     }
   }
-
   return theanswerreadyreal;
 }
-
 string processlanguage(string userinput) {
   string answerstring;
   markerc1 = 0;
@@ -376,7 +357,6 @@ int main(int argc, char * argv[]) {
   desnumber = "count", desobject = "what", destime = "when", desdescription = "describe", desreason = "why", desplace = "where", desemotion = "feel", desaction = "how", descommand = "command", desbridge = "bridge", desconcept = "concept";
   cout << "SynthReason.  v0.9b" << endl;
   int sentstruc = 0;
-
   while (0 == 0) {
     cout << endl;
     ifstream file;
@@ -485,48 +465,6 @@ int main(int argc, char * argv[]) {
       line.erase();
       word.erase();
     }
-    if (userinput == "trade?") {
-      userinput.erase();
-      float temp1;
-      int combine = buy + sell;
-      divbuy = buy / combine;
-      divsell = sell / combine;
-      divbuy *= 100;
-      divsell *= 100;
-      if (divbuy > 50) {
-        cout << "ACTION: BUY, ";
-        temp1 = divbuy - 50;
-      }
-      if (divsell > 50) {
-        cout << "ACTION: SELL, ";
-        temp1 = divsell - 50;
-      }
-      if (divbuy == 50) {
-        cout << "ACTION: NOTHING, ";
-        temp1 = divbuy - 50;
-      }
-      cout << "Probability of Success: ";
-      if (temp1 >= 0 && temp1 < 2) {
-        cout << "CRITICALLY LOW" << endl;
-      }
-      if (temp1 <= 3 && temp1 > 2) {
-        cout << "LOW" << endl;
-      }
-      if (temp1 <= 4 && temp1 > 3) {
-        cout << "MEDIUM" << endl;
-      }
-      if (temp1 <= 5 && temp1 > 4) {
-        cout << "HIGH" << endl;
-      }
-      if (temp1 <= 6 && temp1 > 5) {
-        cout << "VERY HIGH" << endl;
-      }
-      if (temp1 > 6) {
-        cout << "Guaranteed " << endl;
-      }
-      cout << "Points: " << temp1 << endl;
-      cout << "Buy markers: " << buy << " Sell markers: " << sell << endl;
-    }
     if (userinput == "found?") {
       userinput.erase();
       cout << "number found: " << found << endl;
@@ -545,7 +483,6 @@ int main(int argc, char * argv[]) {
       m++;
     }
     if (userinput == "show reasonchain") {
-
       cout << chainreason;
     }
     if (userinput == "think") {
@@ -558,19 +495,14 @@ int main(int argc, char * argv[]) {
       while (o < 10) {
         structposB = structurestr.find(" ", structposA);
         cout << "STRUCT:" << structposA << " " << structposB;
-        //  string structureword = structurestr.substr(structposA,structposB-structposA);
         structposA = structposB + 1;
-        //userinput = "describe thought?";
         thoughtposB = thoughtstr.find(" ", thoughtposA);
         cout << "  PROCESS:" << thoughtposA << " " << thoughtposB << endl;
-        // string thoughtword = thoughtstr.substr(thoughtposA,thoughtposB-thoughtposA);
         thoughtposA = thoughtposB + 1;
-        //  cout << thoughtword;
         o++;
       }
     }
     if (userinput == "open auto window") {
-
       system("main \"auto.txt\"");
     }
     if (userinput == "save notes") {
