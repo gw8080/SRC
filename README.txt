@@ -30,5 +30,3 @@ E41B = clear all memory
 show answerstring = display knowledgebase
 load file = process text written in the first argument for the program(windows:drag and drop)
 
-*Approximate processing times 15-20 minutes per 512kb of pre-processed data(Knowledgebase.txt)
-
