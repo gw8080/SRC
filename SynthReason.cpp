@@ -374,7 +374,7 @@ int main(int argc, char * argv[]) {
   int sweep = 0;
   int n = 0;
   desnumber = "count", desobject = "what", destime = "when", desdescription = "describe", desreason = "why", desplace = "where", desemotion = "feel", desaction = "how", descommand = "command", desbridge = "bridge", desconcept = "concept";
-  cout << "SynthReason.  v0.8b" << endl;
+  cout << "SynthReason.  v0.9b" << endl;
   int sentstruc = 0;
 
   while (0 == 0) {
