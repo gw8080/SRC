@@ -33,7 +33,7 @@ int wordc = 0;
 int trade = 0;
 float buy = 0;
 float sell = 0;
-int a = 0; // swerg
+int a = 0;
 int b = 0;
 int m = 0;
 int procnote = 0;
@@ -179,7 +179,6 @@ string processresponsealgbraic(string answerstring, string userinput) {
             synthreasonword = word;
           }
           if (filesearch(word, "reason.txt") == 1) {
-
             synthanswer = desreason + " does one " + word + "?";
             synthreasonword = word;
           }
@@ -238,75 +237,6 @@ string processlanguage(string userinput) {
       int clip = word.find(" ");
       if (clip == 0) {
         word = word.substr(1, word.size());
-      }
-      if (trade == 1) {
-        if (searchset == 0) {
-          string line;
-          ifstream textfile2;
-          textfile2.open(filetwo.c_str());
-          while (!textfile2.eof()) {
-            getline(textfile2, line);
-            wordpos = 0;
-            wordc = 0;
-            while (wordpos != -1) {
-              wordpos = line.find(" ", wordpos + 1);
-            }
-            int getmatch = line.find(word);
-            if (getmatch > -1 && word != "a" && word != "in" && word != "or" &&
-              word != "by") {
-              markerc1++;
-              if (markerc1 == wordc) {
-                buy++;
-              }
-            }
-          }
-          textfile2.close();
-          string line2;
-          ifstream textfile3;
-          textfile3.open(fileone.c_str());
-          while (!textfile3.eof()) {
-            getline(textfile3, line2);
-            wordpos = 0;
-            wordc = 0;
-            while (wordpos != -1) {
-              wordpos = line2.find(" ", wordpos + 1);
-              wordc++;
-            }
-            int getmatch = line2.find(word);
-            if (getmatch > -1 && word != "a" && word != "in" && word != "or" &&
-              word != "by") {
-              markerc2++;
-              if (markerc2 == wordc) {
-                sell++;
-              }
-            }
-          }
-          textfile3.close();
-        }
-        if (searchset == 1) {
-          string line3;
-          ifstream textfile4;
-          textfile4.open("skim.txt");
-          while (!textfile4.eof()) {
-            getline(textfile4, line3);
-            wordpos = 0;
-            wordc = 0;
-            while (wordpos != -1) {
-              wordpos = line3.find(" ", wordpos + 1);
-              wordc++;
-            }
-            int getmatch = line3.find(word);
-            if (getmatch > -1 && word != "a" && word != "in" && word != "or" &&
-              word != "by") {
-              markerc3++;
-              if (markerc3 == wordc) {
-                found++;
-                notes += userinput + ":";
-              }
-            }
-          }
-          textfile4.close();
-        }
       }
       if (trade == 0) {
         exists = 0;
@@ -394,51 +324,8 @@ int main(int argc, char * argv[]) {
       userinput.erase();
       cout << answerstring;
     }
-    if (userinput == "show thought") {
-      userinput.erase();
-      cout << * thought;
-    }
-    if (userinput == "show structure") {
-      userinput.erase();
-      cout << * structure;
-    }
     if (speedprocessing == 1) {
       answerstring.erase();
-    }
-    if (userinput == "load insight") {
-      userinput.erase();
-      string linei;
-      ifstream textfilei;
-      ifstream textfilei1;
-      ifstream textfilei2;
-      textfilei.open("ginsight.txt");
-      while (!textfilei.eof()) {
-        getline(textfilei, linei);
-        userinput = "you want " + linei;
-        userinput = userinput + " :";
-        answerstring += processlanguage(userinput);
-        linei.erase();
-      }
-      textfilei2.open("self.txt");
-      while (!textfilei2.eof()) {
-        getline(textfilei2, linei);
-        userinput = "you are " + linei;
-        userinput = userinput + " :";
-        answerstring += processlanguage(userinput);
-        linei.erase();
-      }
-      textfilei.close();
-      textfilei1.close();
-      textfilei2.close();
-    }
-    if (userinput == "switch mode") {
-      userinput.erase();
-      if (trade == 0) {
-        trade = 1;
-      }
-      if (trade == 1) {
-        trade = 0;
-      }
     }
     if (userinput == "E41A") {
       userinput.erase();
@@ -456,15 +343,6 @@ int main(int argc, char * argv[]) {
       line.erase();
       word.erase();
     }
-    if (userinput == "found?") {
-      userinput.erase();
-      cout << "number found: " << found << endl;
-    }
-    if (userinput == "show notes") {
-      userinput.erase();
-      cout << notes;
-      m++;
-    }
     if (userinput == "process info") {
       system("start main \"web.txt\"");
     }
@@ -472,26 +350,6 @@ int main(int argc, char * argv[]) {
       userinput.erase();
       cout << userinputall;
       m++;
-    }
-    if (userinput == "show reasonchain") {
-      cout << chainreason;
-    }
-    if (userinput == "think") {
-      int structposA = 0, structposB;
-      int thoughtposA = 0, thoughtposB;
-      int x = 0, y = 0;
-      string structurestr = structure[x];
-      string thoughtstr = thought[y];
-      int o = 0, p = 0;
-      while (o < 10) {
-        structposB = structurestr.find(" ", structposA);
-        cout << "STRUCT:" << structposA << " " << structposB;
-        structposA = structposB + 1;
-        thoughtposB = thoughtstr.find(" ", thoughtposA);
-        cout << "  PROCESS:" << thoughtposA << " " << thoughtposB << endl;
-        thoughtposA = thoughtposB + 1;
-        o++;
-      }
     }
     if (userinput == "open auto window") {
       system("main \"auto.txt\"");
@@ -511,8 +369,7 @@ int main(int argc, char * argv[]) {
       procnote = 1;
     }
     if (sweep == 1) {
-      if (procnote == 0) {
-      }
+      if (procnote == 0) {}
       if (procnote == 1) {
         userinputall = notes + ":";
       }
@@ -566,7 +423,7 @@ int main(int argc, char * argv[]) {
     if (sentstruc == 0) {
       answerstring += processlanguage(userinput);
     }
-    if (trade == 0) {
+    if (trade == 0 && speedprocessing == 0) {
       if (sentstruc == 0) {
         theanswerready = processresponsealgbraic(answerstring, userinput);
       }
