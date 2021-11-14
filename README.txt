@@ -1,4 +1,4 @@
-learning: load a .txt document via the program's runtime argument, e.g main.exe "humanity.txt" and type in 'load file' at the prompt for the learn program to consolidate knowledge into 'knowledgebase.txt' (windows:drag and drop onto .exe also works)
+learning: load a .txt document via the program's runtime argument, e.g SynthReason.exe "humanity.txt" and type in 'load file' at the prompt for the learn program to consolidate knowledge into 'knowledgebase.txt' (windows:drag and drop onto .exe also works)
 
 This basic artificial intelligence program 'SynthReason' is designed to build conceptual networks based on idea components. The tool provides an extension of cognition for those who cannot possibly think the ideas that are desired.
 
